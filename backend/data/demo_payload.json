@@ -1,0 +1,215 @@
+{
+  "snps_parsed": 612483,
+  "results": {
+    "schizophrenia": {
+      "raw_score": -0.1729,
+      "zscore": -0.193,
+      "percentile": 47.1,
+      "snps_found": 472097,
+      "snps_total": 1083770,
+      "coverage_pct": 49.2,
+      "probability": 1.4,
+      "risk_tier": "average",
+      "top_contributors": [
+        "bipolar",
+        "alcohol_use_disorder",
+        "ptsd"
+      ]
+    },
+    "alzheimers": {
+      "raw_score": 0.5439,
+      "zscore": 1.193,
+      "percentile": 67.9,
+      "snps_found": 407811,
+      "snps_total": 1083770,
+      "coverage_pct": 46.6,
+      "probability": 3.0,
+      "risk_tier": "average",
+      "top_contributors": [
+        "anorexia",
+        "schizophrenia",
+        "ptsd"
+      ]
+    },
+    "bipolar": {
+      "raw_score": 1.3746,
+      "zscore": 0.613,
+      "percentile": 59.2,
+      "snps_found": 542853,
+      "snps_total": 1083770,
+      "coverage_pct": 52.1,
+      "probability": 3.3,
+      "risk_tier": "average",
+      "top_contributors": [
+        "autism",
+        "schizophrenia",
+        "depression"
+      ]
+    },
+    "depression": {
+      "raw_score": -0.864,
+      "zscore": -0.387,
+      "percentile": 44.2,
+      "snps_found": 440758,
+      "snps_total": 1083770,
+      "coverage_pct": 48.7,
+      "probability": 3.7,
+      "risk_tier": "average",
+      "top_contributors": [
+        "alzheimers",
+        "tourette",
+        "multiple_sclerosis"
+      ]
+    },
+    "adhd": {
+      "raw_score": 1.1073,
+      "zscore": 2.12,
+      "percentile": 81.8,
+      "snps_found": 558263,
+      "snps_total": 1083770,
+      "coverage_pct": 49.5,
+      "probability": 3.1,
+      "risk_tier": "moderate",
+      "top_contributors": [
+        "ocd",
+        "ptsd",
+        "alzheimers"
+      ]
+    },
+    "autism": {
+      "raw_score": -0.164,
+      "zscore": 1.28,
+      "percentile": 69.2,
+      "snps_found": 544714,
+      "snps_total": 1083770,
+      "coverage_pct": 50.0,
+      "probability": 4.7,
+      "risk_tier": "average",
+      "top_contributors": [
+        "parkinsons",
+        "anorexia",
+        "depression"
+      ]
+    },
+    "parkinsons": {
+      "raw_score": -0.2939,
+      "zscore": -0.113,
+      "percentile": 48.3,
+      "snps_found": 459742,
+      "snps_total": 1083770,
+      "coverage_pct": 58.1,
+      "probability": 4.8,
+      "risk_tier": "average",
+      "top_contributors": [
+        "depression",
+        "alzheimers",
+        "multiple_sclerosis"
+      ]
+    },
+    "multiple_sclerosis": {
+      "raw_score": 1.3992,
+      "zscore": -0.333,
+      "percentile": 45.0,
+      "snps_found": 495638,
+      "snps_total": 1083770,
+      "coverage_pct": 47.8,
+      "probability": 2.1,
+      "risk_tier": "average",
+      "top_contributors": [
+        "alcohol_use_disorder",
+        "adhd",
+        "tourette"
+      ]
+    },
+    "ocd": {
+      "raw_score": -1.0989,
+      "zscore": -1.093,
+      "percentile": 33.6,
+      "snps_found": 444862,
+      "snps_total": 1083770,
+      "coverage_pct": 54.1,
+      "probability": 1.0,
+      "risk_tier": "average",
+      "top_contributors": [
+        "multiple_sclerosis",
+        "parkinsons",
+        "adhd"
+      ]
+    },
+    "ptsd": {
+      "raw_score": -0.094,
+      "zscore": 1.9,
+      "percentile": 78.5,
+      "snps_found": 546001,
+      "snps_total": 1083770,
+      "coverage_pct": 48.7,
+      "probability": 4.0,
+      "risk_tier": "moderate",
+      "top_contributors": [
+        "tourette",
+        "schizophrenia",
+        "depression"
+      ]
+    },
+    "anorexia": {
+      "raw_score": -1.6274,
+      "zscore": 1.053,
+      "percentile": 65.8,
+      "snps_found": 505162,
+      "snps_total": 1083770,
+      "coverage_pct": 49.6,
+      "probability": 2.8,
+      "risk_tier": "average",
+      "top_contributors": [
+        "ptsd",
+        "epilepsy",
+        "autism"
+      ]
+    },
+    "alcohol_use_disorder": {
+      "raw_score": 1.1438,
+      "zscore": 0.367,
+      "percentile": 55.5,
+      "snps_found": 631914,
+      "snps_total": 1083770,
+      "coverage_pct": 60.5,
+      "probability": 3.2,
+      "risk_tier": "average",
+      "top_contributors": [
+        "adhd",
+        "bipolar",
+        "depression"
+      ]
+    },
+    "epilepsy": {
+      "raw_score": -1.2438,
+      "zscore": -0.053,
+      "percentile": 49.2,
+      "snps_found": 595825,
+      "snps_total": 1083770,
+      "coverage_pct": 54.9,
+      "probability": 4.5,
+      "risk_tier": "average",
+      "top_contributors": [
+        "parkinsons",
+        "autism",
+        "depression"
+      ]
+    },
+    "tourette": {
+      "raw_score": -0.0092,
+      "zscore": 0.727,
+      "percentile": 60.9,
+      "snps_found": 529372,
+      "snps_total": 1083770,
+      "coverage_pct": 46.5,
+      "probability": 1.8,
+      "risk_tier": "average",
+      "top_contributors": [
+        "alzheimers",
+        "bipolar",
+        "anorexia"
+      ]
+    }
+  }
+}

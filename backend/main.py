@@ -1,15 +1,71 @@
+# main.py
+
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import tempfile, os, shutil
+from contextlib import asynccontextmanager
+import tempfile, os, json
 from pathlib import Path
+import pandas as pd
 
 from parsers.vcf_parser import parse_vcf
 from parsers.txt_parser import parse_23andme
-from scoring.prs_scoring import score_all_disorders
+from scoring.prs_scoring import score_all_disorders, DISORDER_META
 from scoring.normalizer import to_percentiles
 from ml.model import predict_with_explanation
 
-app = FastAPI(title="GenoRisk", version="1.0")
+
+# ── startup: load effect alleles once ────────────────────────────────────────
+
+EFFECT_ALLELES: dict = {}
+
+# replace the build_effect_alleles function in main.py
+
+def build_effect_alleles() -> dict:
+    """
+    Build {(chr, pos): effect_allele} from all weights files.
+    Called once at startup.
+    """
+    ea = {}
+    for f in Path("weights").glob("*.txt"):
+        try:
+            df = pd.read_csv(f, sep="\t", comment="#", dtype=str)
+            df.columns = [c.strip().lower() for c in df.columns]
+
+            if "chr_name" not in df.columns or "chr_position" not in df.columns:
+                continue
+            if "effect_allele" not in df.columns:
+                continue
+
+            # normalize chromosome format
+            df["chr_name"] = (
+                df["chr_name"]
+                .str.replace("chr", "", case=False)
+                .str.lstrip("0")
+                .replace("", "0")
+            )
+
+            for _, row in df.iterrows():
+                key = (str(row["chr_name"]), str(row["chr_position"]).strip())
+                ea[key] = str(row["effect_allele"])
+
+        except Exception as e:
+            print(f"Warning: could not read {f.name}: {e}")
+
+    print(f"Loaded effect alleles for {len(ea):,} positions")
+    return ea
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # runs before the server starts accepting requests
+    global EFFECT_ALLELES
+    print("Loading effect alleles...")
+    EFFECT_ALLELES = build_effect_alleles()
+    yield
+    # runs on shutdown (nothing to clean up)
+
+
+app = FastAPI(title="GenoRisk", version="1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,58 +75,69 @@ app.add_middleware(
 )
 
 
-# ── helpers ──────────────────────────────────────────────────────────────────
+# ── helpers ───────────────────────────────────────────────────────────────────
 
 def detect_and_parse(filepath: str) -> dict:
-    """
-    Sniff the file format and route to the right parser.
-    Returns {rsid: dosage} dict.
-    """
+    """Sniff the file format and route to the right parser."""
     with open(filepath) as f:
-        first_real_line = next(l for l in f if not l.startswith("#")).strip()
+        for line in f:
+            if line.startswith("#"):
+                continue
+            first = line.strip()
+            break
 
-    # 23andMe: first column is rsid, fourth is genotype string like "AG"
-    if first_real_line.startswith("rs") and len(first_real_line.split("\t")) == 4:
-        return parse_23andme(filepath)
+    cols = first.split("\t")
 
-    # VCF: first column is CHROM (a chromosome number or "chr1" etc.)
-    return parse_vcf(filepath)
+    # 23andMe: rsid in col 0, genotype string in col 3
+    if cols[0].startswith("rs") and len(cols) == 4:
+        return parse_23andme(filepath, EFFECT_ALLELES)
+
+    # VCF: CHROM in col 0 (number or "chrN"), rsid in col 2
+    return parse_vcf(filepath, EFFECT_ALLELES)
 
 
 def run_pipeline(filepath: str) -> dict:
-    """Full pipeline: parse -> score -> normalize -> ML predict."""
-    snp_dosages  = detect_and_parse(filepath)
-    raw_scores   = score_all_disorders(snp_dosages)
-    percentiles  = to_percentiles(raw_scores)
-    predictions  = predict_with_explanation(percentiles)
+    """Full pipeline: parse → score → normalize → predict."""
+    snp_dosages = detect_and_parse(filepath)
+
+    if len(snp_dosages) == 0:
+        raise ValueError(
+            "No matching SNPs found. Make sure this is a valid "
+            "23andMe or VCF file."
+        )
+
+    raw_scores  = score_all_disorders(snp_dosages)
+    percentiles = to_percentiles(raw_scores)
+    predictions = predict_with_explanation(percentiles)
+
     return {
         "snps_parsed": len(snp_dosages),
         "results":     predictions,
     }
 
 
-# ── routes ───────────────────────────────────────────────────────────────────
+# ── routes ────────────────────────────────────────────────────────────────────
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "snps_loaded": len(EFFECT_ALLELES)}
 
 
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
     """
-    Main endpoint. Accepts a .vcf or 23andMe .txt file.
-    Deletes the file immediately after processing — nothing persisted.
+    Main endpoint. Accepts .vcf or 23andMe .txt file.
+    File is deleted immediately after processing — nothing persisted.
     """
     filename = file.filename or ""
 
     if not filename.endswith((".vcf", ".txt")):
         raise HTTPException(400, "Only .vcf and .txt files are supported.")
 
-    max_mb = 100
     contents = await file.read()
-    if len(contents) > max_mb * 1024 * 1024:
-        raise HTTPException(413, f"File too large. Max size is {max_mb}MB.")
+
+    if len(contents) > 100 * 1024 * 1024:   # 100MB limit
+        raise HTTPException(413, "File too large. Max size is 100MB.")
 
     suffix = Path(filename).suffix
     with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
@@ -80,32 +147,33 @@ async def analyze(file: UploadFile = File(...)):
     try:
         payload = run_pipeline(tmp_path)
         return {"status": "ok", **payload}
+
     except ValueError as e:
-        raise HTTPException(422, f"Could not parse file: {e}")
+        raise HTTPException(422, str(e))
+
+    except FileNotFoundError as e:
+        raise HTTPException(500, str(e))
+
     except Exception as e:
         raise HTTPException(500, f"Analysis failed: {e}")
+
     finally:
-        os.unlink(tmp_path)   # always delete, even if we crashed
+        os.unlink(tmp_path)   # always delete the temp file
 
 
 @app.get("/demo")
 def demo():
-    """
-    Returns pre-baked realistic scores — use this on stage
-    so you don't need to upload a real genome file during the demo.
-    """
-    import json
-    payload_path = Path("data/demo_payload.json")
-    if not payload_path.exists():
-        raise HTTPException(404, "Demo payload not found. Run scripts/generate_demo.py first.")
-    return json.loads(payload_path.read_text())
+    """Pre-baked scores for live demo — no upload needed."""
+    path = Path("data/demo_payload.json")
+    if not path.exists():
+        raise HTTPException(
+            404,
+            "Run `python scripts/generate_demo.py` to create the demo payload."
+        )
+    return json.loads(path.read_text())
 
 
 @app.get("/disorders")
 def list_disorders():
-    """
-    Returns metadata about every supported disorder —
-    useful for the frontend to build its UI without hardcoding names.
-    """
-    from scoring.prs_scoring import DISORDER_META
+    """Metadata about every supported disorder — used by the frontend."""
     return DISORDER_META

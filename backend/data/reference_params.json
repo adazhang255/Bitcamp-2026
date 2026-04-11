@@ -1,0 +1,16 @@
+{
+    "schizophrenia":        {"mean": 0.0, "std": 1.0},
+    "alzheimers":           {"mean": 0.0, "std": 1.0},
+    "bipolar":              {"mean": 0.0, "std": 1.0},
+    "depression":           {"mean": 0.0, "std": 1.0},
+    "adhd":                 {"mean": 0.0, "std": 1.0},
+    "autism":               {"mean": 0.0, "std": 1.0},
+    "parkinsons":           {"mean": 0.0, "std": 1.0},
+    "multiple_sclerosis":   {"mean": 0.0, "std": 1.0},
+    "ocd":                  {"mean": 0.0, "std": 1.0},
+    "ptsd":                 {"mean": 0.0, "std": 1.0},
+    "anorexia":             {"mean": 0.0, "std": 1.0},
+    "alcohol_use_disorder": {"mean": 0.0, "std": 1.0},
+    "epilepsy":             {"mean": 0.0, "std": 1.0},
+    "tourette":             {"mean": 0.0, "std": 1.0}
+}
