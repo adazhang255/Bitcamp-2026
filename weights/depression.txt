@@ -1,0 +1,58 @@
+###PGS CATALOG SCORING FILE - see https://www.pgscatalog.org/downloads/#dl_ftp_scoring for additional information
+#format_version=2.0
+##POLYGENIC SCORE (PGS) INFORMATION
+#pgs_id=PGS000667
+#pgs_name=LPA_GRS43
+#trait_reported=Lipoprotein A
+#trait_mapped=lipoprotein A measurement
+#trait_efo=EFO_0006925
+#weight_type=beta
+#genome_build=hg19
+#variants_number=43
+##SOURCE INFORMATION
+#pgp_id=PGP000127
+#citation=Trinder M et al. JAMA Cardiol (2020). doi:10.1001/jamacardio.2020.5398
+rsID	chr_name	chr_position	effect_allele	other_allele	effect_weight	locus_name	variant_description
+rs74617384	6	160997118	T	A	91.16		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs140570886	6	161013013	C	T	172.43		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs73596816	6	161017363	A	G	41.28		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs182443492	6	160891897	A	C	79.12		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs369686024	6	161032800	A	G	41.28		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs56393506	6	161089307	T	C	26.66		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs151135411	6	160831796	A	G	149.425		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs145099029	6	161292838	C	A	38.27		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs41267813	6	160998199	A	G	-126.42		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs6916433	6	160890350	T	A	-10.15		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs783147	6	161137990	A	G	-4.3		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs41266379	6	160953137	C	T	15.265		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs143461353	6	160954800	T	C	28.165		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs142126734	6	160942926	A	G	16.125		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs139609547	6	160899049	?	A	9.46		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs1835346	6	161162290	G	A	11.18		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs4252152	6	161159366	G	T	19.565		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs79246098	6	161078894	C	T	13.33		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs139145675	6	160966559	A	G	-48.375		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs41259144	6	161022107	T	C	-20.64		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs9456551	6	161012805	C	T	7.74		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs41267809	6	160953642	G	A	-14.19		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs34371670	6	161257953	T	C	-18.06		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs41269876	6	161070653	A	C	-17.63		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs141834709	6	160909667	A	T	18.705		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs4252170	6	161162406	C	T	6.88		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs138491411	6	161251940	G	A	10.75		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs183815886	6	160720804	C	G	31.82		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs117446263	6	160847571	A	G	-11.18		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs200684404	6	160543317	T	C	145.555		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs200144324	6	160493099	T	C	175.225		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs77337569	6	161087652	G	T	11.18		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs186418835	6	161214526	A	G	-20.855		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs117534432	6	161177443	T	C	7.095		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs200376184	6	161011999	C	G	37.625		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs11753588	6	161189071	A	G	-5.16		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs4709474	6	161285760	G	A	3.655		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs191690882	6	161031132	A	G	-28.38		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs182349273	6	161255668	G	A	73.96		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs75274517	6	161088956	A	G	-13.975		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs143365644	6	160825930	T	A	7.955		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs139389770	6	161135746	G	T	-11.18		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
+rs140606700	6	161250301	G	A	13.76		Conditional association with Lp(a) [Beta (nmol/L)] values for the association with lipoprotein(a) were converted from mg/dL to nmol/L by multiplying by 2.15.
