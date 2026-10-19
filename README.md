@@ -1,2 +1,2 @@
 # Bitcamp-2026
-¯\_(ツ)_/¯ 
+An ML system for analyzing facial skin characteristics and delivering personalized skincare treatment recommendations.
